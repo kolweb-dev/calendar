@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+    <title>Calendar Event</title>
+    <link rel="stylesheet" href="css/libs.min.css">
+    <link rel="stylesheet" href="css/style.min.css">
+</head>
+
+<body>
+<div class="wrapper">
+    <div class="content page-content">
+        <header class="header">
+
+        </header>
+
+        <section class="calendar">
+            <div class="container">
+                <table class="calendar-table">
+
+                    <caption class="calendar-table__top">
+                        <div class="calendar-table__top-inner">
+                            <h3>Calendar</h3>
+                            <div class="select">
+                                <select id="eventPerson">
+                                    <option selected class="showEvent" >All members</option>
+                                    <option class="showEvent" >Maria</option>
+                                    <option class="showEvent" >Bob</option>
+                                    <option class="showEvent" >Alex</option>
+                                </select>
+                            </div>
+                            <button class="calendar-btn" id="addEvent">New event +</button>
+                        </div>
+                    </caption>
+                    <tr class="calendar-table__titles">
+                        <th>Name</th>
+                        <th>Mon</th>
+                        <th>Tue</th>
+                        <th>Wed</th>
+                        <th>Thu</th>
+                        <th>Fri</th>
+                    </tr>
+                    <tr data-time="10:00">
+                        <td>10:00</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr data-time="11:00">
+                        <td>11:00</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr data-time="12:00">
+                        <td>12:00</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr data-time="13:00">
+                        <td>13:00</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr data-time="14:00">
+                        <td>14:00</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr data-time="15:00">
+                        <td>15:00</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr data-time="16:00">
+                        <td>16:00</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr data-time="17:00">
+                        <td>17:00</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr data-time="18:00">
+                        <td>18:00</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
+
+        <div id="popup" class="popup">
+            <div class="popup__box">
+                <div class="popup__content">
+                    <h1 class="popup__title">
+                        New event
+                    </h1>
+                    <form id="formPopup" action="">
+                        <div class="popup__inner">
+                            <div class="popup__item">
+                                <p>Name of the event: </p>
+                                <input class="popup__item-event" type="text" placeholder="Name event" required>
+                            </div>
+
+                            <div class="popup__item">
+                                <p>Participants: </p>
+                                <div class="popup__multiselect" onclick="showCheckboxes()">
+                                    <div class="popup__selectBox">
+                                        <div id="popupSelect" class="popup__select">
+                                            <select>
+                                                <option>Select an option</option>
+                                            </select>
+                                        </div>
+                                        <div class="popup__overSelect"></div>
+                                    </div>
+                                    <div class="checkboxes__users" id="checkboxes">
+                                        <label for="popupUser1">
+                                            <input class="popupUser" name='Maria' type="checkbox" id="popupUser1">Maria
+                                        </label>
+                                        <label for="popupUser2">
+                                            <input class="popupUser" name="Bob" type="checkbox" id="popupUser2">Bob
+                                        </label>
+                                        <label for="conducted">
+                                            <input class="popupUser" name="Alex" type="checkbox" id="conducted">Alex
+                                        </label>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="popup__item">
+                                <p>Day:</p>
+                                <div class="select popup__item-select-days">
+                                    <select id="eventDays">
+                                        <option selected>Monday</option>
+                                        <option>Tuesday</option>
+                                        <option>Wednesday</option>
+                                        <option>Thursday</option>
+                                        <option>Friday</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="popup__item">
+                                <p>Time:</p>
+                                <div class="select popup__item-select-days">
+                                    <select id="selectWorkTime">
+                                        <option selected data-time="10:00">10:00</option>
+                                        <option data-time="11:00">11:00</option>
+                                        <option data-time="12:00">12:00</option>
+                                        <option data-time="13:00">13:00</option>
+                                        <option data-time="14:00">14:00</option>
+                                        <option data-time="15:00">15:00</option>
+                                        <option data-time="16:00">16:00</option>
+                                        <option data-time="17:00">17:00</option>
+                                        <option data-time="18:00">18:00</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="popup__foter">
+                            <button class="popup__btn calendar-btn" id="popupClose" data-number="1">Cancel</button>
+                            <!--                        <button class="popup__btn calendar-btn" >Creat</button>-->
+                            <input class="popup__btn calendar-btn" type="submit" value="Create" id="creatEvent">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="deletie-box">
+            <div class="deletie-box__container">
+            <div class="deletie-box__title">
+                Are you sure want to delete "Retrospective" event?
+            </div>
+            <div class="deletie-box__inner">
+                <button class="deletie-box__btn" id="deleteBtnNo" type="button">No</button>
+                <button class="deletie-box__btn" id="deleteBtnYes" type="button">Yes</button>
+            </div>
+            </div>
+        </div>
+        <div class="booked">
+            <div class="booked__inner">
+                <span class="booked__error">X</span>
+                <p class="booked__text">Failed to create an event. Time slot is already booked.</p>
+                <button class="booked__btn">X</button>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+    </footer>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="js/libs.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+
+</html>
