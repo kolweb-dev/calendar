@@ -10,6 +10,7 @@ let checkInput = document.querySelectorAll('.popupUser');
 let booked = document.querySelector('.booked');
 let eventPerson = document.querySelector('#eventPerson');
 let eventOptions = eventPerson.querySelectorAll('option');
+let enventInput = document.querySelector('.popup__item-event')
 popupSelect.innerHTML = '';
 const worksDay = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
 const timeFay = ['10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00'];
@@ -18,6 +19,20 @@ const eventAll = [{person: ["Maria"], nameEvent: "Daily Standup", time: "10:00",
     {person: ["Maria","Bob","Alex"], nameEvent: "Planning session", time: "13:00", day: "Thursday"}
 ];
 
+creatEvent.classList.add('btn-disabled');
+creatEvent.disabled = true;
+
+enventInput.oninput = function () {
+    if(enventInput.value.length > 0){
+        creatEvent.style.opacity = '1';
+        creatEvent.style.cursor = 'pointer';
+        creatEvent.disabled = false;
+    }else if(enventInput.value.length === 0){
+        creatEvent.style.opacity = '.4';
+        creatEvent.style.cursor = 'default';
+        creatEvent.disabled = true;
+    }
+}
 
 function checkEvent(arr,day,time){
     for (let element of eventAll){
@@ -67,7 +82,7 @@ creatEvent.addEventListener('click', () => {
     let calendarTabelTime = document.querySelector('.calendar-table')
     let workTimeStrings = calendarTabelTime.rows;
     let eventDays = document.querySelector('#eventDays').value;
-    let enventInput = document.querySelector('.popup__item-event')
+    
     let newEnventText = popup.querySelector('.popup__item-event').value;
     let selectWorkTime = document.querySelector('#selectWorkTime').value;
     let checkedInputArray = [];
@@ -89,8 +104,9 @@ creatEvent.addEventListener('click', () => {
 
         }
     }else{
-    booked.style.display = 'block';
+        booked.style.display = 'block';
         enventInput = checkedInputArray.slice();
+        enventInput.value = '';
     }
 
 
@@ -108,7 +124,9 @@ creatEvent.addEventListener('click', () => {
     popupSelect.innerHTML = '';
     enventInput.value = ' ';
     popupSelect.innerHTML = ' ';
-
+    creatEvent.disabled = true;
+    creatEvent.style.cursor = 'default';
+    creatEvent.style.opacity = '.4';
     checkboxes.style.display = 'none';
 })
 
